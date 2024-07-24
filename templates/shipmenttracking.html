@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+
+    {% block title%} <title> Shipment Tracking </title> {% endblock %}
+    <p id="adminlink"><a href="{% url 'admin:index' %}">Admin Portal</a></p>
+    <h1 class = "header"> Shipment Tracking </h1>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="{% static 'js/index.js' %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/form.css' %}">
+
+    <div class="wrapper">
+        <ul class="nav">
+            <li><a href="{% url 'index' %}">Home</a></li>
+            <li><a href="{% url 'aboutus' %}">About us!</a></li>
+            <li><a href="{% url 'orderentry' %}">Order here!</a></li>
+            <li><a class="active" href="{% url 'shipmenttracking' %}">Track your shipment</a></li>
+            <li><a href="{% url 'ticketmanage' %}">Having trouble? Click here to get help!</a></li>
+        </ul>
+    </div>
+
+</head>
+
+<body>
+    <p>
+         <!--Basic Customer Information--> 
+        <form method = "get">
+            {% csrf_token %}
+            <div class="fieldWrapper">
+                {{ form.trackingCode.errors }}
+                <label for="{{ form.trackingCode.id_for_label }}">Tracking Code:</label>
+                {{ form.trackingCode }}
+            </div>
+            <div class="fieldWrapper">
+                <button type = "submit">Submit your Tracking Code</button> 
+            </div>
+        </form>
+    </p> 
+
+    <p>
+        <div class="fieldWrapper">
+            {% for info in order %}
+                <p>ID: {{ info.id }}</p>
+                <p>Order: {{ info }}</p>
+                <p>Shipping: {{ info.order_Shipping.type }}</p>
+                <p>Total Cost: ${{ info.order_Price }}</p>
+                <p>Date Ordered: {{ info.order_Date }}</p>
+                <p>Status: {{ info.order_Status }}</p>
+            {% endfor %}
+        </div>
+    </p>
+
+</body>
+

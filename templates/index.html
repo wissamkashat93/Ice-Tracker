@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    {% block title %}<Wissam Kashat!</title>{% endblock %}
+    <p id="adminlink"><a href="{% url 'admin:index' %}">Admin Portal</a></p>
+    <h1 class="header">Wissam Kashat!</h1>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="{% static 'js/index.js' %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
+
+    <div class="wrapper">
+        <ul class="nav">
+            <li><a class="active" href="{% url 'index' %}">Home</a></li>
+            <li><a href="{% url 'aboutus' %}">About us!</a></li>
+            <li><a  href="{% url 'orderentry' %}">Order here!</a></li>
+            <li><a href="{% url 'shipmenttracking' %}">Track your shipment</a></li>
+            <li><a href="{% url 'ticketmanage' %}">Having trouble? Click here to get help!</a></li>
+        </ul>
+    </div>
+</head>
+
+<body>
+    <div class=flex-container>
+        <div class="content-container">
+            <img class = "homeimg" src="https://i.imgur.com/5d0viPI.jpg" alt="Blue" style="width:100%"></img>
+        </div>
+        <div class="content-container">
+            <img class = "homeimg" src="https://i.imgur.com/fWsDYKq.jpg" alt="Blue" style="width:100%"></img>
+        </div>
+        <div class="content-container">
+            <img class = "homeimg" src="https://i.imgur.com/1VtKO5e.jpg" alt="Blue" style="width:100%"></img>
+        </div>
+      </div>
+</body>
+
+<footer id="footer">
+    <p id="bottommessage">Made  by Wissam Kashat, Ryan Smith, Ashley Hong, and  Arash Tamimi </p>
+</footer>
+
+</html>

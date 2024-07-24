@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+
+    {% block title%} <title> Order Entry </title> {% endblock %}
+    <p id="adminlink"><a href="{% url 'admin:index' %}">Admin Portal</a></p>
+    <h1 class = "header"> Order Entry </h1>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="{% static 'js/index.js' %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/form.css' %}">
+
+    <div class="wrapper">
+        <ul class="nav">
+            <li><a href="{% url 'index' %}">Home</a></li>
+            <li><a href="{% url 'aboutus' %}">About us!</a></li>
+            <li><a class="active" href="{% url 'orderentry' %}">Order here!</a></li>
+            <li><a href="{% url 'shipmenttracking' %}">Track your shipment</a></li>
+            <li><a href="{% url 'ticketmanage' %}">Having trouble? Click here to get help!</a></li>
+        </ul>
+    </div>
+
+</head>
+
+<body>
+    <p>
+        <!--Basic Customer Information--> 
+        <form method = "post">
+            {% csrf_token %}
+            {% for info in order %}
+            <div class="fieldWrapper">
+                
+                <label for="{{ model.order_Price.id_for_label }}">Price:</label>
+                {{ info.order_Price }}
+            </div>
+            {% endfor %}
+           
+            <div class="fieldWrapper">
+                {{ form.customer_first_name.errors }}
+                <label for="{{ form.customer_first_name.id_for_label }}">First Name:</label>
+                {{ form.customer_first_name }}
+            </div>
+            <div class="fieldWrapper">
+                {{ form.customer_last_name.errors }}
+                <label for="{{ form.customer_last_name.id_for_label }}">Last Name:</label>
+                {{ form.customer_last_name }}
+            </div>
+            <div class="fieldWrapper">
+                {{ form.shipping_address.errors }}
+                <label for="{{ form.shipping_address.id_for_label }}">Shipping Address:</label>
+                {{ form.shipping_address }}
+            </div>
+            <div class="fieldWrapper">
+                {{ form.billing_address.errors }}
+                <label for="{{ form.billing_address.id_for_label }}">Billing Address:</label>
+                {{ form.billing_address }}
+            </div>
+            <div class="fieldWrapper">
+                <button type = "submit">Place your order!</button> 
+            </div>
+        </form>
+    </p> 
+</body>

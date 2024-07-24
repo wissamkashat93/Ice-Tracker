@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    {% block title%} <title> Thank You Page </title> {% endblock %}
+    <p id="adminlink"><a href="{% url 'admin:index' %}">Admin Portal</a></p>
+    <h1 class = "header"> Thank You! </h1>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="{% static 'js/index.js' %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
+
+    <div class="wrapper">
+        <ul class="nav">
+            <li><a href="{% url 'index' %}">Home</a></li>
+            <li><a href="{% url 'aboutus' %}">About us!</a></li>
+            <li><a href="{% url 'orderentry' %}">Order here!</a></li>
+            <li><a href="{% url 'shipmenttracking' %}">Track your shipment</a></li>
+            <li><a href="{% url 'ticketmanage' %}">Having trouble? Click here to get help!</a></li>
+        </ul>
+    </div>
+
+</head>
+
+<body>
+    <img id="tygif" src=https://media3.giphy.com/media/KAq6IcKzXUtmPbs0Te/giphy.gif?cid=790b7611b15db90b0d9e02217e63756ada18eecc38cb1df9&rid=giphy.gif&ct=s>
+    <p id="tytext">Thank you for your purchase!</p>
+    
+</body>
